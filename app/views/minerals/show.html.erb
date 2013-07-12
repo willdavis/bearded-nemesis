@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @mineral.type_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mineral.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_mineral_path(@mineral) %> |
+<%= link_to 'Back', minerals_path %>
