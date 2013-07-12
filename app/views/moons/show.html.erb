@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Celestial:</b>
+  <%= @moon.celestial_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @moon.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @moon.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_moon_path(@moon) %> |
+<%= link_to 'Back', moons_path %>

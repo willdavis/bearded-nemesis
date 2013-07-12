@@ -1,0 +1,27 @@
+<h1>Listing moons</h1>
+
+<table>
+  <tr>
+    <th>Celestial</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moons.each do |moon| %>
+  <tr>
+    <td><%= moon.celestial_id %></td>
+    <td><%= moon.name %></td>
+    <td><%= moon.location_id %></td>
+    <td><%= link_to 'Show', moon %></td>
+    <td><%= link_to 'Edit', edit_moon_path(moon) %></td>
+    <td><%= link_to 'Destroy', moon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moon', new_moon_path %>

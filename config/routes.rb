@@ -1,4 +1,6 @@
 BeardedNemesis::Application.routes.draw do
+  resources :moons
+
   get "home/index"
 
   # The priority is based upon order of creation:
