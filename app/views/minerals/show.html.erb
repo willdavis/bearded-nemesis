@@ -10,7 +10,11 @@
 
 <p>
   <b>Moons:</b>
-  <%= @mineral.moons %>
+  <ul>
+  <% @mineral.moons.each do |moon| %>
+    <li><%= moon.name %></li>
+  <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Back', minerals_path %>
