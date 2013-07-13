@@ -24,7 +24,7 @@ class MoonsController < ApplicationController
   # GET /moons/new
   # GET /moons/new.json
   def new
-    @moon = Moon.new
+    @moon = Report.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +40,11 @@ class MoonsController < ApplicationController
   # POST /moons
   # POST /moons.json
   def create
-    @moon = Moon.new(params[:moon])
+    @moon = Report.new(params[:moon])
 
     respond_to do |format|
       if @moon.save
-        format.html { redirect_to @moon, notice: 'Moon was successfully created.' }
+        format.html { redirect_to @moon.moon, notice: 'Moon was successfully created.' }
         format.json { render json: @moon, status: :created, location: @moon }
       else
         format.html { render action: "new" }

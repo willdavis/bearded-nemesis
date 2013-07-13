@@ -1,6 +1,6 @@
 <h1>Listing minerals</h1>
 
-<table>
+<table class="table table-condensed table-hover table-striped">
   <tr>
     <th>Type</th>
     <th>Name</th>
@@ -10,7 +10,7 @@
 <% @minerals.each do |mineral| %>
   <tr>
     <td><%= mineral.type_id %></td>
-    <td><%= mineral.name %></td>
+    <td><%= link_to "#{mineral.name}", mineral %></td>
     <td><%= link_to 'Show', mineral %></td>
   </tr>
 <% end %>

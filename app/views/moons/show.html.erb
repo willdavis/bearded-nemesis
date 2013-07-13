@@ -15,7 +15,11 @@
 
 <p>
   <b>Minerals:</b>
-  <%= @moon.minerals %>
+  <ul>
+  <% @moon.minerals.each do |mineral| %>
+    <li><%= mineral.name %></li>
+  <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_moon_path(@moon) %> |

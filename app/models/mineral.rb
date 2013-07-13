@@ -3,6 +3,6 @@ class Mineral < ActiveRecord::Base
   
   has_and_belongs_to_many :moons
   
-  validates :name,    :presence => true
-  validates :type_id, :presence => true, numericality: { only_integer: true }
+  validates :name,    :presence => true, :uniqueness => true
+  validates :type_id, :presence => true, numericality: { only_integer: true }, :uniqueness => true
 end
