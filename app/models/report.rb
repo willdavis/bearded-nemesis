@@ -60,8 +60,8 @@ class Report
     @minerals ||= []
   end
   
-  def mineral(name)
-    Mineral.find_by_name(name)
+  def mineral(id)
+    Mineral.find(id)
   end
   
   private

@@ -25,3 +25,32 @@ $ ->
     minLength: 3
     items: 5
   )
+  
+$ ->
+  $('#moon_location_name').change(
+    () ->
+      $('#moon_celestial_id').empty()
+      
+      location = $('#moon_location_name').val()
+      $.get(
+        'http://evedata.herokuapp.com/celestials'
+        { solar_system: location, group_id: 8, limit: 100 }
+        (data) ->
+          $.each(data, (key, val) ->
+            $('#moon_celestial_id').append("<option value='#{data[key].id}'>#{data[key].name}</option>")
+          )
+      )
+  )
+  
+$ ->
+  $('#moon_celestial_id').change(
+    () ->
+      selectedValue = $(this).find(":selected").val()
+      
+      $.get(
+        "http://evedata.herokuapp.com/celestials/#{selectedValue}"
+        (data) ->
+          console.log("the value you selected: " + data[0].name)
+          $('#moon_moon_name').val(data[0].name)
+      )
+  )
