@@ -1,0 +1,17 @@
+<h1>Listing minerals</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @minerals.each do |mineral| %>
+  <tr>
+    <td><%= mineral.type_id %></td>
+    <td><%= mineral.name %></td>
+    <td><%= link_to 'Show', mineral %></td>
+  </tr>
+<% end %>
+</table>
