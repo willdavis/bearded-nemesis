@@ -1,7 +1,5 @@
 BeardedNemesis::Application.routes.draw do
   resources :minerals
-
-
   resources :moons
 
   get "home/index"
