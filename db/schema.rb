@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712235010) do
+ActiveRecord::Schema.define(:version => 20130713002052) do
 
   create_table "minerals", :force => true do |t|
     t.integer  "type_id"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20130712235010) do
   end
 
   add_index "minerals", ["type_id"], :name => "index_minerals_on_type_id", :unique => true
+
+  create_table "minerals_moons", :id => false, :force => true do |t|
+    t.integer "mineral_id"
+    t.integer "moon_id"
+  end
 
   create_table "moons", :force => true do |t|
     t.integer  "celestial_id"
