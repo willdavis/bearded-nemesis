@@ -1,4 +1,4 @@
-<%= form_for(@moon) do |f| %>
+<%= form_for @moon, :url => moons_path, :as => :moon do |f| %>
   <% if @moon.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@moon.errors.count, "error") %> prohibited this moon from being saved:</h2>
@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :moon_name %>
   </div>
   <div class="field">
     <%= f.label :location_id %><br />
