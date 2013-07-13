@@ -35,10 +35,10 @@ class Report
   def save
     return false unless valid?
     
-    minerals.push(mineral(mineral_name_1)) unless mineral_name_1.nil?
-    minerals.push(mineral(mineral_name_2)) unless mineral_name_2.nil?
-    minerals.push(mineral(mineral_name_3)) unless mineral_name_3.nil?
-    minerals.push(mineral(mineral_name_4)) unless mineral_name_4.nil?
+    minerals.push(mineral(mineral_name_1)) unless mineral_name_1.empty?
+    minerals.push(mineral(mineral_name_2)) unless mineral_name_2.empty?
+    minerals.push(mineral(mineral_name_3)) unless mineral_name_3.empty?
+    minerals.push(mineral(mineral_name_4)) unless mineral_name_4.empty?
     
     #Save the report
     if create_objects
@@ -61,7 +61,7 @@ class Report
   end
   
   def mineral(name)
-    Mineral.where(:name => name).first
+    Mineral.find_by_name(name)
   end
   
   private
