@@ -12,16 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :celestial_id %><br />
-    <%= f.number_field :celestial_id %>
+    <%= f.label :location_name %><br />
+    <%= f.text_field :location_name, :autocomplete => :off, :placeholder => "solar system name", :data => { :provide =>"typeahead" } %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :moon_name %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br />
-    <%= f.number_field :location_id %>
+    <%= f.label :moon_name %><br />
+    <%= f.text_field :moon_name, :autocomplete => :off, :placeholder => "moon name", :data => { :provide =>"typeahead" } %>
   </div>
   <div class="field">
     <%= f.label :mineral_1 %><br />
@@ -39,6 +35,10 @@
     <%= f.label :mineral_4 %><br />
     <%= f.text_field :mineral_name_4 %>
   </div>
+  
+  <%= f.hidden_field :celestial_id %>
+  <%= f.hidden_field :location_id %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
