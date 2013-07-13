@@ -5,8 +5,6 @@
     <th>Type</th>
     <th>Name</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @minerals.each do |mineral| %>
@@ -14,12 +12,6 @@
     <td><%= mineral.type_id %></td>
     <td><%= mineral.name %></td>
     <td><%= link_to 'Show', mineral %></td>
-    <td><%= link_to 'Edit', edit_mineral_path(mineral) %></td>
-    <td><%= link_to 'Destroy', mineral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Mineral', new_mineral_path %>
