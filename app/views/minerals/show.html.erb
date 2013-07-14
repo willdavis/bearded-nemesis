@@ -1,20 +1,23 @@
-<p>
-  <b>Type:</b>
-  <%= @mineral.type_id %>
-</p>
+<div class="row-fluid">
+  <div id="mineral-icon" class="span4">
+    <b><%= @mineral.name %></b> (ID:<span id="mineral-id"><%= @mineral.type_id %></span>)
+  </div>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @mineral.name %>
-</p>
-
-<p>
-  <b>Moons:</b>
-  <ul>
+<table class="table table-condensed table-hover table-striped">
+  <tr>
+    <th>Moon</th>
+    <th>Location</th>
+    <th></th>
+  </tr>
+  
   <% @mineral.moons.each do |moon| %>
-    <li><%= link_to "#{moon.name}", moon %></li>
+    <tr>
+      <td><%= link_to "#{moon.name}", moon %></td>
+      <td><%= moon.location_id %></td>
+    </tr>
   <% end %>
-  </ul>
-</p>
+  
+</table>
 
 <%= link_to 'Back', minerals_path %>

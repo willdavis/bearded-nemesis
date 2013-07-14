@@ -15,3 +15,4 @@
 //= require bootstrap
 //= require application
 //= require moons
+//= require minerals
