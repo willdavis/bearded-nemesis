@@ -7,7 +7,7 @@ class Report
   # ActiveModel support
   def persisted?; false; end
   
-  ATTRIBUTES = [:celestial_id, :location_id, :moon_name, :mineral_name_1, :mineral_name_2, :mineral_name_3, :mineral_name_4]
+  ATTRIBUTES = [:celestial_id, :location_id, :location_name, :moon_name, :mineral_name_1, :mineral_name_2, :mineral_name_3, :mineral_name_4]
   attr_accessor *ATTRIBUTES
   
   def initialize(attributes = {})
@@ -60,8 +60,8 @@ class Report
     @minerals ||= []
   end
   
-  def mineral(name)
-    Mineral.find_by_name(name)
+  def mineral(id)
+    Mineral.find(id)
   end
   
   private
