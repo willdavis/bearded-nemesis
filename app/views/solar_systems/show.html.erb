@@ -6,7 +6,8 @@
 
 <div id="star-moons">
   <b>Moons</b>
+  <div id="star-moon-count">Tracked Moons: <%= @known_moon_count %></div>
   <% @moons.each do |moon| %>
-    <div><%= link_to "#{moon.name}", moon %></div>
+    <div class="moon"><%= link_to "#{moon.name}", moon %></div>
   <% end %>
 </div>

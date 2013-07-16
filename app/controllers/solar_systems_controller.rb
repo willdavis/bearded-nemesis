@@ -6,6 +6,7 @@ class SolarSystemsController < ApplicationController
   def show
     @id = params[:id]
     @moons = Moon.where("location_id = ?", params[:id])
+    @known_moon_count = Moon.where("location_id = ?", params[:id]).count
 
     respond_to do |format|
       format.html # show.html.erb
