@@ -19,11 +19,11 @@ $ ->
         "http://evedata.herokuapp.com/celestials"
         { solar_system_id: star_id, limit: 100, group_id: 8 }
         (data) ->
-          $('#all-moons').empty()
-          
           $.each(data, (key, val) ->
-            console.log "adding moon to list: #{data[key].name}"
-            $('#all-moons').append("<div id='#{data[key].id}'>#{data[key].name}</div>")
+            if $('#star-moons').text().match(data[key].name)
+              console.log "#{data[key].name} is already present"
+            else
+              $('#star-moons').append("<div id='#{data[key].id}'>#{data[key].name}</div>")
           )
       )
   )

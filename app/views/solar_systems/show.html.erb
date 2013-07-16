@@ -5,11 +5,8 @@
 </div>
 
 <div id="star-moons">
-  <b>Known Moons</b>
+  <b>Moons</b>
   <% @moons.each do |moon| %>
     <div><%= link_to "#{moon.name}", moon %></div>
   <% end %>
-  
-  <b>All Moons</b>
-  <div id="all-moons">Searching for moons...</div>
 </div>
