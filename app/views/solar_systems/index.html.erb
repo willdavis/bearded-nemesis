@@ -1,2 +1,11 @@
-<h1>SolarSystems#index</h1>
-<p>Find me in app/views/solar_systems/index.html.erb</p>
+<h3>Solar Systems</h3>
+
+<b>Currently tracking:</b>
+<div id="solarsystems">
+  <% @solar_systems.each do |system| %>
+    <div id="<%= system.location_id %>">
+      <div id="solarsystem-name"></div>
+      <div id="solarsystem-id"><%= link_to "#{system.location_id}", solar_system_path(system.location_id) %></div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,6 @@
 class SolarSystemsController < ApplicationController
   def index
+    @solar_systems = Moon.select(:location_id).uniq
   end
 
   def show
