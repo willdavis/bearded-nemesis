@@ -10,7 +10,7 @@
 
 <p>
   <b>Location:</b>
-  <%= @moon.location_id %>
+  <%= link_to "#{@moon.location_id}", solar_system_path(@moon.location_id) %>
 </p>
 
 <p>
