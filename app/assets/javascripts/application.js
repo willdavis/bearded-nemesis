@@ -16,3 +16,4 @@
 //= require application
 //= require moons
 //= require minerals
+//= require solar_systems
