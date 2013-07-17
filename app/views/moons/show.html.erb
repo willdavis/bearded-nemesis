@@ -1,0 +1,15 @@
+<div id="moon-info">
+  <div id="moon-name"><b><%= @moon.name %></b> (ID: <%= @moon.celestial_id %>)</div>
+  <div id="moon-location">Location: <%= link_to "#{@moon.location_id}", solar_system_path(@moon.location_id) %></div>
+</div>
+
+<b>Minerals</b>
+<div id="moon-minerals">
+  <% @moon.minerals.each do |mineral| %>
+    <div><%= link_to "#{mineral.name}", mineral %></div>
+  <% end %>
+</div>
+
+<br />
+<%= link_to 'Edit', edit_moon_path(@moon) %> |
+<%= link_to 'Back', moons_path %>

@@ -1,0 +1,45 @@
+<%= form_for @moon, :url => moons_path, :as => :moon do |f| %>
+  <% if @moon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moon.errors.count, "error") %> prohibited this moon from being saved:</h2>
+
+      <ul>
+      <% @moon.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :location_name %><br />
+    <%= f.text_field :location_name, :autocomplete => :off, :placeholder => "solar system name", :data => { :provide =>"typeahead" } %>
+  </div>
+  <div class="field">
+    <%= f.label :moon_name %><br />
+    <select id="moon_celestial_id" name="moon[celestial_id]"></select>
+  </div>
+  <div class="field">
+    <%= f.label :mineral_1 %><br />
+    <%= collection_select(:moon, :mineral_name_1, Mineral.all, :id, :name, {prompt: 'Select Mineral'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :mineral_2 %><br />
+    <%= collection_select(:moon, :mineral_name_2, Mineral.all, :id, :name, {prompt: 'Select Mineral'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :mineral_3 %><br />
+    <%= collection_select(:moon, :mineral_name_3, Mineral.all, :id, :name, {prompt: 'Select Mineral'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :mineral_4 %><br />
+    <%= collection_select(:moon, :mineral_name_4, Mineral.all, :id, :name, {prompt: 'Select Mineral'}) %>
+  </div>
+  
+  <%= f.hidden_field :moon_name %>
+  <%= f.hidden_field :location_id %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
