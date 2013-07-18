@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.create(
         provider:auth.provider,
-        uid:auth.uid,
+        uid:auth.uid.to_s,
         email:auth.info.email,
         password:Devise.friendly_token[0,20]
         )
