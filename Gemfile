@@ -30,6 +30,10 @@ end
 gem 'jquery-rails'
 gem "figaro"
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-braveid'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
