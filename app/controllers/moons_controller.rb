@@ -1,6 +1,4 @@
 class MoonsController < ApplicationController
-  before_filter :authenticate_user!
-  
   # GET /moons
   # GET /moons.json
   def index

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :omniauthable
   # attr_accessible :title, :body
   
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_for_braveid_oauth(auth, signed_in_resource=nil)
     puts auth
     
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
