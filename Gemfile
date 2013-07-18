@@ -30,6 +30,8 @@ end
 gem 'jquery-rails'
 gem "figaro"
 
+gem 'devise'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
