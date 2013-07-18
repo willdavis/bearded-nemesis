@@ -32,6 +32,7 @@ gem "figaro"
 
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-braveid'
 
 group :development do
   gem "better_errors"
