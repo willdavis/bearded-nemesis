@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_filter :authenticate
+  
   def brave_id
     puts "(brave_moonraker) Omniauth callback initiated"
     puts "(brave_moonraker) Omniauth params: #{env['omniauth.auth']}"
