@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem "figaro"
 
 gem 'devise'
+gem 'omniauth'
 
 group :development do
   gem "better_errors"

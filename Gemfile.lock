@@ -74,6 +74,7 @@ GEM
     figaro (0.6.4)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -90,6 +91,9 @@ GEM
     mime-types (1.23)
     multi_json (1.7.7)
     nokogiri (1.5.9)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -179,6 +183,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   launchy
+  omniauth
   pg
   quiet_assets
   rails (= 3.2.13)

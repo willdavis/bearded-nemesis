@@ -1,6 +1,7 @@
 BeardedNemesis::Application.routes.draw do
-  resources :solar_systems, :only => [:index, :show]
+  devise_for :users
 
+  resources :solar_systems, :only => [:index, :show]
   resources :minerals
   resources :moons
 
