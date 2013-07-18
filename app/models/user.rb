@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :email, :password
   
   def self.find_for_braveid_oauth(auth, signed_in_resource=nil)
-    puts auth
-    
     user = User.where(:provider => auth.provider, :uid => auth.uid.to_s).first
     unless user
       user = User.create(
