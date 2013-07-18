@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable
-  # attr_accessible :title, :body
+  
+  attr_accessible :provider, :uid, :email, :password
   
   def self.find_for_braveid_oauth(auth, signed_in_resource=nil)
     puts auth
