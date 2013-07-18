@@ -1,6 +1,7 @@
 BeardedNemesis::Application.routes.draw do
-  resources :solar_systems, :only => [:index, :show]
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  resources :solar_systems, :only => [:index, :show]
   resources :minerals
   resources :moons
 
