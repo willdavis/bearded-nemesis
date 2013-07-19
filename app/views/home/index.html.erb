@@ -1,1 +1,8 @@
 <h3>Tracking moons for great profit</h3>
+
+<% unless user_signed_in? %>
+  <p>Want in on this goodness?</p>
+  <%= link_to "Login with BraveID", user_omniauth_authorize_path(:brave_id), :class => "btn btn-primary" %>
+  &nbsp;or&nbsp;
+  <%= link_to "Signup with BraveID", "https://brave-id.herokuapp.com/sign_up", :class => "btn btn-success" %>
+<% end %>

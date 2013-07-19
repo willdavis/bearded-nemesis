@@ -1,4 +1,6 @@
 class MineralsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /minerals
   # GET /minerals.json
   def index
