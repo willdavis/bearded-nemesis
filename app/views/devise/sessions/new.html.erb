@@ -1,5 +1,7 @@
 <h2>Sign in</h2>
 
+<%= link_to "Login with BraveID", user_omniauth_authorize_path(:brave_id), :class => "btn btn-primary" %>
+<p><b>Or</b></p>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
