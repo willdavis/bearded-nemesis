@@ -11,5 +11,6 @@
 </div>
 
 <br />
-<%= link_to 'Edit', edit_moon_path(@moon) %> |
-<%= link_to 'Back', moons_path %>
+<%= link_to 'Back', moons_path, :class => "btn" %> | 
+<%= link_to 'Edit', edit_moon_path(@moon), :class => "btn" %> | 
+<%= link_to 'Destroy', @moon, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
