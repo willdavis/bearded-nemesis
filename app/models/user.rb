@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable
   
-  attr_accessible :provider, :uid, :email, :password
+  attr_accessible :provider, :uid, :email, :password, :name
   
   def self.find_for_braveid_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid.to_s).first
@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
         provider:auth.provider,
         uid:auth.uid.to_s,
         email:auth.info.email,
+        name:auth.info.characters.first,
         password:Devise.friendly_token[0,20]
         )
     end
