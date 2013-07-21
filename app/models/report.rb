@@ -7,7 +7,7 @@ class Report
   # ActiveModel support
   def persisted?; false; end
   
-  ATTRIBUTES = [:celestial_id, :location_id, :location_name, :moon_name, :mineral_name_1, :mineral_name_2, :mineral_name_3, :mineral_name_4]
+  ATTRIBUTES = [:user_id, :celestial_id, :location_id, :location_name, :moon_name, :mineral_name_1, :mineral_name_2, :mineral_name_3, :mineral_name_4]
   attr_accessor *ATTRIBUTES
   
   def initialize(attributes = {})
@@ -15,6 +15,8 @@ class Report
       send("#{attribute}=", attributes[attribute])
     end
   end
+  
+  validates :user_id, :presence => true
   
   validate do
     unless moon.valid?
@@ -48,6 +50,10 @@ class Report
     end
   end
   
+  def user
+    @user ||= User.find(user_id)
+  end
+  
   def moon
     @moon ||= Moon.new(
       :celestial_id => celestial_id,
@@ -69,6 +75,7 @@ class Report
   def create_objects
     ActiveRecord::Base.transaction do
       moon.save!
+      user.moons << moon
       
       minerals.each do |mineral|
         moon.minerals << mineral

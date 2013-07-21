@@ -36,6 +36,7 @@
     <%= collection_select(:moon, :mineral_name_4, Mineral.all, :id, :name, {prompt: 'Select Mineral'}) %>
   </div>
   
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :moon_name %>
   <%= f.hidden_field :location_id %>
   

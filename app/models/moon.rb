@@ -7,4 +7,8 @@ class Moon < ActiveRecord::Base
   validates :name,          :presence => true, :uniqueness => true
   validates :celestial_id,  :presence => true, numericality: { only_integer: true }, :uniqueness => true
   validates :location_id,   :presence => true, numericality: { only_integer: true }
+  
+  def created_by
+    @user ||= User.find(user_id)
+  end
 end
