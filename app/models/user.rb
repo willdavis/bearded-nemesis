@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :provider, :uid, :email, :password, :name
   
+  has_many :moons
+  
   def self.find_for_braveid_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid.to_s).first
     unless user
