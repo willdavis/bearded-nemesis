@@ -19,6 +19,15 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe MoonsController do
+  
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
+  
+  after(:each) do
+    sign_out @user
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Moon. As you add validations to Moon, be sure to
@@ -28,7 +37,7 @@ describe MoonsController do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # MoonsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { {"warden.user.user.key" => session["warden.user.user.key"]} }
 
   describe "GET index" do
     it "assigns all moons as @moons" do
