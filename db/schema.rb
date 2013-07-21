@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718020751) do
+ActiveRecord::Schema.define(:version => 20130721223507) do
 
   create_table "minerals", :force => true do |t|
     t.integer  "type_id"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(:version => 20130718020751) do
     t.integer  "celestial_id"
     t.string   "name"
     t.integer  "location_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+    t.integer  "updated_by_id"
   end
 
   add_index "moons", ["celestial_id"], :name => "index_moons_on_celestial_id", :unique => true
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130718020751) do
     t.string   "uid"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
