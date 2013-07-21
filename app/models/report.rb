@@ -58,7 +58,8 @@ class Report
     @moon ||= Moon.new(
       :celestial_id => celestial_id,
       :location_id => location_id,
-      :name => moon_name
+      :name => moon_name,
+      :updated_by_id => user.id
     )
   end
   

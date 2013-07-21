@@ -1,5 +1,5 @@
 class Moon < ActiveRecord::Base
-  attr_accessible :celestial_id, :location_id, :name
+  attr_accessible :celestial_id, :location_id, :name, :updated_by_id
   
   has_and_belongs_to_many :minerals
   belongs_to :user
@@ -9,6 +9,10 @@ class Moon < ActiveRecord::Base
   validates :location_id,   :presence => true, numericality: { only_integer: true }
   
   def created_by
-    @user ||= User.find(user_id)
+    @submitter ||= User.find(user_id)
+  end
+  
+  def updated_by
+    @updater ||= User.find(updated_by_id)
   end
 end
