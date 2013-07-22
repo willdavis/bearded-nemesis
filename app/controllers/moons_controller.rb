@@ -4,7 +4,7 @@ class MoonsController < ApplicationController
   # GET /moons
   # GET /moons.json
   def index
-    @moons = Moon.all
+    @moons = Moon.order(:name).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
