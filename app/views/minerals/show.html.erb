@@ -11,7 +11,7 @@
     <th></th>
   </tr>
   
-  <% @mineral.moons.each do |moon| %>
+  <% @moons.each do |moon| %>
     <tr>
       <td><%= link_to "#{moon.name}", moon %></td>
       <td><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
@@ -19,5 +19,6 @@
   <% end %>
   
 </table>
+<%= paginate @moons %>
 
 <%= link_to 'Back', minerals_path %>

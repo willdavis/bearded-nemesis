@@ -16,6 +16,7 @@ class MineralsController < ApplicationController
   # GET /minerals/1.json
   def show
     @mineral = Mineral.find(params[:id])
+    @moons = @mineral.moons.order(:name).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # show.html.erb
