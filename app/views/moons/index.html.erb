@@ -1,5 +1,6 @@
 <h1>Listing moons</h1>
 
+<%= paginate @moons %>
 <table class="table table-condensed table-hover table-striped">
   <tr>
     <th>Celestial</th>
@@ -19,5 +20,4 @@
 </table>
 <%= paginate @moons %>
 <br />
-
 <%= link_to 'New Moon', new_moon_path, :class => "btn btn-primary" %>
