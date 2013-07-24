@@ -1,7 +1,7 @@
 <h1>Listing moons</h1>
 
 <%= paginate @moons %>
-<table class="table table-condensed table-hover table-striped">
+<table id="all-moons" class="table table-condensed table-hover table-striped">
   <tr>
     <th>Celestial</th>
     <th>Name</th>
@@ -10,10 +10,10 @@
   </tr>
 
 <% @moons.each do |moon| %>
-  <tr>
+  <tr class="moon">
     <td><%= moon.celestial_id %></td>
     <td><%= link_to "#{moon.name}", moon %></td>
-    <td><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
+    <td id="<%= moon.location_id %>" class="moon-location-name"><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
     <td><%= link_to 'Edit', edit_moon_path(moon) %></td>
   </tr>
 <% end %>
