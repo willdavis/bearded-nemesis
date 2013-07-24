@@ -25,7 +25,20 @@ $ ->
             if $('#star-moons').text().match(data[key].name)
               console.log "#{data[key].name} is already present"
             else
-              $('#star-moons').append("<div id='#{data[key].id}'>#{data[key].name}</div>")
+              $('#star-moons').append("<tr><td id='#{data[key].id}'>#{data[key].name}</td></tr>")
+          )
+      )
+      
+      $('.mineral').each(
+        (index) ->
+          obj = $($('.mineral').get(index))
+          id = obj.text()
+          $.get(
+            "http://evedata.herokuapp.com/items/#{id}"
+            (data) ->
+              console.log data[0].images.small
+              obj.empty()
+              obj.append("<img src='#{data[0].images.small}' />")
           )
       )
   )
