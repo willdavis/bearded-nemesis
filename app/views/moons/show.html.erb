@@ -1,6 +1,6 @@
 <div id="moon-info">
   <div id="moon-name"><b><%= @moon.name %></b> (ID:<%= @moon.celestial_id %>)</div>
-  <div id="moon-location">Location: <%= link_to "#{@moon.location_id}", solar_system_path(@moon.location_id) %></div>
+  <div id="moon-location">Location: <span id="<%= @moon.location_id %>"><%= link_to "#{@moon.location_id}", solar_system_path(@moon.location_id) %></span></div>
   <div id="moon-submitter">Submitted by: <%= @moon.created_by.name %> on <%= @moon.created_at %></div>
   <div id="moon-updater">Updated by: <%= @moon.updated_by.name %> on <%= @moon.updated_at %></div>
 </div>
