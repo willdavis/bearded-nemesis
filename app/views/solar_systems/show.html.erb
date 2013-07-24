@@ -5,10 +5,18 @@
   <div class="star-region">Region: </div>
 </div>
 
-<div id="star-moons">
-  <b>Moons</b>
-  <div id="star-moon-count">Tracked Moons: <%= @known_moon_count %></div>
+<table id="star-moons" class="table table-condensed table-striped">
+  <tr>
+    <th>Moon Name</th>
+    <th colspan="4">Minerals</th>
+  <tr>
+  
   <% @moons.each do |moon| %>
-    <div class="moon"><%= link_to "#{moon.name}", moon %></div>
+    <tr>
+      <td><%= link_to "#{moon.name}", moon %></td>
+      <% moon.minerals.each do |mineral| %>
+        <td class="mineral"><%= mineral.type_id %></td>
+      <% end %>
+    </tr>
   <% end %>
-</div>
+</table>
