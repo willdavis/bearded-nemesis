@@ -56,16 +56,30 @@ $ ->
   )
   
 $ ->
+  $('#moon-info').ready(
+    obj = $('#moon-location').children("span")
+    id = obj.text()
+    if id
+      $.get(
+        "http://evedata.herokuapp.com/solar_systems/#{id}"
+        (data) ->
+          obj.empty()
+          obj.append("<a href='/solar_systems/#{id}'>#{data[0].name}</a>")
+      )
+  )
+  
+$ ->
   $('#all-moons').ready(
     $('.moon').each(
       (index) ->
         obj = $($('.moon').get(index)).children('.moon-location-name')
         id = obj.attr('id')
-        $.get(
-          "http://evedata.herokuapp.com/solar_systems/#{id}"
-          (data) ->
-            obj.empty()
-            obj.append("<a href='/solar_systems/#{id}'>#{data[0].name}</a>")
-        )
+        if id
+          $.get(
+            "http://evedata.herokuapp.com/solar_systems/#{id}"
+            (data) ->
+              obj.empty()
+              obj.append("<a href='/solar_systems/#{id}'>#{data[0].name}</a>")
+          )
     )
   )
