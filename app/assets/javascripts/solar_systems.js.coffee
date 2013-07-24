@@ -34,11 +34,9 @@ $ ->
     $('.solarsystem').each(
       (index) ->
         id = $('.solarsystem').get(index).id
-        
         $.get(
           "http://evedata.herokuapp.com/solar_systems/#{id}"
           (data) ->
-            console.log data[0].name
             $($('.solarsystem').get(index)).prepend("<a href='solar_systems/#{id}'>#{data[0].name}</a>&nbsp;")
         )
     )
