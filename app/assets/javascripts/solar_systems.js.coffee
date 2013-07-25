@@ -11,6 +11,8 @@ $ ->
           $('.star-security').append("#{data[0].security}")
           $('.star-constellation').append("#{data[0].constellation.name}")
           $('.star-region').append("#{data[0].region.name}")
+          
+          $('#add-moon').append("<a href='/moons/new?location_id=#{data[0].id}&location_name=#{data[0].name}' class='btn btn-mini btn-primary'>New Moon for #{data[0].name}</a>")
       )
   )
   
