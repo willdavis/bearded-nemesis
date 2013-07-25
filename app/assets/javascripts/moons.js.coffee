@@ -27,6 +27,20 @@ $ ->
   )
   
 $ ->
+  $('#moon_celestial_id').ready(
+    () ->
+      location = $('#moon_moon_name').val()
+      if location
+        $.get(
+          'http://evedata.herokuapp.com/celestials'
+          { solar_system: location, group_id: 8, limit: 150 }
+          (data) ->
+            $.each(data, (key, val) ->
+              $('#moon_celestial_id').append("<option value='#{data[key].id}'>#{data[key].name}</option>")
+            )
+        )
+  )
+  
   $('#moon_location_name').change(
     () ->
       $('#moon_celestial_id').empty()

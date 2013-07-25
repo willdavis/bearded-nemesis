@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :location_name %><br />
-    <%= f.text_field :location_name, :autocomplete => :off, :placeholder => "solar system name", :data => { :provide =>"typeahead" } %>
+    <%= f.text_field :location_name, :autocomplete => :off, :placeholder => "solar system name", :data => { :provide =>"typeahead" }, :value => params[:location_name] %>
   </div>
   <div class="field">
     <%= f.label :moon_name %><br />
@@ -37,8 +37,8 @@
   </div>
   
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :moon_name %>
-  <%= f.hidden_field :location_id %>
+  <%= f.hidden_field :moon_name, :value => params[:location_name] %>
+  <%= f.hidden_field :location_id, :value => params[:location_id] %>
   
   <div class="actions">
     <%= f.submit %>
