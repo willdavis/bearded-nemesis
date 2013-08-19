@@ -79,6 +79,7 @@ $ ->
         (data) ->
           obj.empty()
           obj.append("<a href='/solar_systems/#{id}'>#{data[0].name}</a>")
+          $('#add-moon').append("<a href='/moons/new?location_id=#{data[0].id}&location_name=#{data[0].name}' class='btn btn-mini btn-primary'>New Moon for #{data[0].name}</a>")
       )
   )
   

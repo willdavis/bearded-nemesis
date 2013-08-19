@@ -1,24 +1,31 @@
-<div class="row-fluid">
-  <div id="mineral-icon" class="span4">
-    <b><%= @mineral.name %></b> (ID:<span id="mineral-id"><%= @mineral.type_id %></span>)
+<div id="minerals-show">
+  <div class="row-fluid">
+    <div id="mineral-icon" class="span4">
+      <b><%= @mineral.name %></b> (ID:<span id="mineral-id"><%= @mineral.type_id %></span>)
+    </div>
   </div>
-</div>
 
-<table class="table table-condensed table-hover table-striped">
-  <tr>
-    <th>Moon</th>
-    <th>Location</th>
-    <th></th>
-  </tr>
-  
-  <% @moons.each do |moon| %>
+  <table class="table table-condensed table-hover table-striped">
     <tr>
-      <td><%= link_to "#{moon.name}", moon %></td>
-      <td><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
+      <th>Moon</th>
+      <th>Other Resources</th>
+      <th>Location</th>
     </tr>
-  <% end %>
-  
-</table>
-<%= paginate @moons %>
+    
+    <% @moons.each do |moon| %>
+      <tr>
+        <td><%= link_to "#{moon.name}", moon %></td>
+        <td>
+          <% moon.minerals.where("id != ?", @mineral.id).each do |mineral| %>
+            <span class="mineral"><%= mineral.type_id %></span>
+          <% end %>
+        </td>
+        <td><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
+      </tr>
+    <% end %>
+    
+  </table>
+  <%= paginate @moons %>
 
-<%= link_to 'Back', minerals_path %>
+  <%= link_to 'Back', minerals_path %>
+</div>
