@@ -7,7 +7,7 @@ class SolarSystemsController < ApplicationController
 
   def show
     @id = params[:id]
-    @moons = Moon.where("location_id = ?", params[:id]).order(:celestial_id)
-    @known_moon_count = @moons.count
+    params[:location_id] = params[:id]
+    @moons = Moon.search(params)
   end
 end
