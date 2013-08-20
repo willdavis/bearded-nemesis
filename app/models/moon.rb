@@ -20,7 +20,7 @@ class Moon < ActiveRecord::Base
   end
   
   def self.search(params)
-    moons = Moon.order(:name)
+    moons = Moon.order(:celestial_id)
                  .by_location_id(params[:location_id])
                  .by_mineral_type_id(params[:mineral_type_id])
                  .page(params[:page])
