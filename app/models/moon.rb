@@ -23,6 +23,6 @@ class Moon < ActiveRecord::Base
     moons = Moon.order(:celestial_id)
                  .by_location_id(params[:location_id])
                  .by_mineral_type_id(params[:mineral_type_id])
-                 .page(params[:page])
+                 .page(params[:page]).per(params[:limit])
   end
 end
