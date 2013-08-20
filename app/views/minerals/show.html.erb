@@ -29,7 +29,7 @@
             <span class="mineral"><%= mineral.type_id %></span>
           <% end %>
         </td>
-        <td><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
+        <td class="solar_system"><%= link_to "#{moon.location_id}", solar_system_path(moon.location_id) %></td>
       </tr>
     <% end %>
     

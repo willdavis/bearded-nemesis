@@ -24,6 +24,18 @@ $ ->
         )
     )
     
+    $('.solar_system').each(
+      (index) ->
+        obj = $($('.solar_system').get(index))
+        id = obj.text()
+        $.get(
+          "http://evedata.herokuapp.com/celestials/#{id}"
+          (data) ->
+            obj.empty()
+            obj.append("<a href='/solar_systems/#{id}'>#{data[0].name}</a>")
+        )
+    )
+    
     window.star_ids = {}
     
     $('#location_name').typeahead(
