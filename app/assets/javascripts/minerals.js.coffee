@@ -23,3 +23,39 @@ $ ->
             obj.append("<img src='#{data[0].images.small}' />")
         )
     )
+    
+    $('.solar_system').each(
+      (index) ->
+        obj = $($('.solar_system').get(index))
+        id = obj.text()
+        $.get(
+          "http://evedata.herokuapp.com/celestials/#{id}"
+          (data) ->
+            obj.empty()
+            obj.append("<a href='/solar_systems/#{id}'>#{data[0].name}</a>")
+        )
+    )
+    
+    window.star_ids = {}
+    
+    $('#location_name').typeahead(
+      source: (query, process) ->
+        $.get(
+          'http://evedata.herokuapp.com/solar_systems'
+          { limit: 5, name: query }
+          (data) ->
+            names = []
+            $.each(data, (key, val) ->
+              names.push(data[key].name)
+              star_ids[data[key].name] = data[key].id
+            )
+            process(names)
+        )
+      updater: (item) ->
+        $('#location_id').val(star_ids[item])
+        console.log("'#{item}' selected with ID: #{star_ids[item]}")
+        return item
+              
+      minLength: 3
+      items: 5
+    )
