@@ -16,7 +16,8 @@ class MineralsController < ApplicationController
   # GET /minerals/1.json
   def show
     @mineral = Mineral.find(params[:id])
-    @moons = @mineral.moons.order(:name).page(params[:page]).per(10)
+    params[:mineral_type_id] = @mineral.type_id
+    @moons = Moon.search(params)
 
     respond_to do |format|
       format.html # show.html.erb

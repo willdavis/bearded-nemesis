@@ -9,6 +9,7 @@ class Moon < ActiveRecord::Base
   validates :location_id,   :presence => true, numericality: { only_integer: true }
   
   scope :by_location_id, lambda { |value| where("location_id = ?", value) if value }
+  scope :by_mineral_type_id, lambda { |value| joins(:minerals).where("type_id = ?", value) if value }
   
   def created_by
     @submitter ||= User.find(user_id)
@@ -21,6 +22,7 @@ class Moon < ActiveRecord::Base
   def self.search(params)
     moons = Moon.order(:name)
                  .by_location_id(params[:location_id])
+                 .by_mineral_type_id(params[:mineral_type_id])
                  .page(params[:page])
   end
 end
