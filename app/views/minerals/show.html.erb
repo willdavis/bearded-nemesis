@@ -4,6 +4,15 @@
       <b><%= @mineral.name %></b> (ID:<span id="mineral-id"><%= @mineral.type_id %></span>)
     </div>
   </div>
+  
+  <div class="pull-right">
+    <%= form_tag("/minerals/#{@mineral.id}", :method => :get, :class => "navbar-form") do %>
+      <%= text_field_tag :location_name, nil, :placeholder => "solar system name", :autocomplete => :off, :data => { :provide =>"typeahead" }, :class => "search-query" %>
+      <%= hidden_field_tag :location_id %>
+      <%= submit_tag "Search" %>
+    <% end %>
+    <br />
+  </div>
 
   <table class="table table-condensed table-hover table-striped">
     <tr>
@@ -24,8 +33,14 @@
       </tr>
     <% end %>
     
+    <% if @moons.empty? %>
+      <tr class="error">
+        <td colspan="3">No results found.</td>
+      <tr>
+    <% end %>
+    
   </table>
   <%= paginate @moons %>
 
-  <%= link_to 'Back', minerals_path %>
+  <%= link_to 'Back', minerals_path, :class => "btn" %>
 </div>

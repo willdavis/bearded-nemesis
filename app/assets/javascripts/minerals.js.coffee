@@ -23,3 +23,27 @@ $ ->
             obj.append("<img src='#{data[0].images.small}' />")
         )
     )
+    
+    window.star_ids = {}
+    
+    $('#location_name').typeahead(
+      source: (query, process) ->
+        $.get(
+          'http://evedata.herokuapp.com/solar_systems'
+          { limit: 5, name: query }
+          (data) ->
+            names = []
+            $.each(data, (key, val) ->
+              names.push(data[key].name)
+              star_ids[data[key].name] = data[key].id
+            )
+            process(names)
+        )
+      updater: (item) ->
+        $('#location_id').val(star_ids[item])
+        console.log("'#{item}' selected with ID: #{star_ids[item]}")
+        return item
+              
+      minLength: 3
+      items: 5
+    )
