@@ -9,15 +9,17 @@
 <table id="star-moons" class="table table-condensed table-striped">
   <tr>
     <th>Moon Name</th>
-    <th colspan="4">Minerals</th>
+    <th>Minerals</th>
   <tr>
   
   <% @moons.each do |moon| %>
     <tr>
       <td><%= link_to "#{moon.name}", moon %></td>
-      <% moon.minerals.each do |mineral| %>
-        <td class="mineral"><%= mineral.type_id %></td>
-      <% end %>
+      <td>
+        <% moon.minerals.each do |mineral| %>
+          <span class="mineral"><%= mineral.type_id %></span>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
