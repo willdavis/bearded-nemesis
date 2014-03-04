@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   
   has_many :moons
   
+  Roles = [ :admin , :banned, :scout, :observer, :default ]
+  
   def self.find_for_braveid_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid.to_s).first
     unless user
@@ -22,5 +24,9 @@ class User < ActiveRecord::Base
         )
     end
     user
+  end
+
+  def is?(requested_role)
+    self.role == requested_role.to_s
   end
 end
