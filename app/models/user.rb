@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable
   
-  attr_accessible :provider, :uid, :email, :password, :name
+  attr_accessible :provider, :uid, :email, :password, :name, :role
   
   has_many :moons
   

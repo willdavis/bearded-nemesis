@@ -11,12 +11,20 @@
     </tr>
 
   <% @users.each do |user| %>
+    <%= form_tag("/admin/users/#{user.id}", :method => :put) do %>
     <tr class="user">
       <td><%= user.email %></td>
       <td><%= user.name %></td>
-      <td><%= user.role %></td>
-      <td><%= link_to "Update", admin_user_path(user), :method => :put %></td>
+      <td>
+        <% if !user.is? :admin %>
+          <%= select_tag("user[role]", options_for_select(User::Roles, user.role)) %>
+        <% else %>
+          Admin
+        <% end %>
+      </td>
+      <td><%= submit_tag "Update" %></td>
     </tr>
+    <% end %>
   <% end %>
   
   <% if @users.empty? %>
