@@ -9,7 +9,7 @@ class Ability
     cannot :manage, :all if user.is? :default
     
     if user.is? :scout
-      can :manage, Moon
+      can :manage, [Moon, Report]
       can :read, Mineral
     end
     

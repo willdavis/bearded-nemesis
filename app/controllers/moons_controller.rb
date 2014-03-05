@@ -1,10 +1,10 @@
 class MoonsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
   
   # GET /moons
   # GET /moons.json
   def index
+    authorize! :index, Moon
     @moons = Moon.search(params)
 
     respond_to do |format|
@@ -16,6 +16,7 @@ class MoonsController < ApplicationController
   # GET /moons/1
   # GET /moons/1.json
   def show
+    authorize! :show, Moon
     @moon = Moon.find(params[:id])
 
     respond_to do |format|
@@ -27,6 +28,7 @@ class MoonsController < ApplicationController
   # GET /moons/new
   # GET /moons/new.json
   def new
+    authorize! :new, Report
     @moon = Report.new
 
     respond_to do |format|
@@ -37,12 +39,14 @@ class MoonsController < ApplicationController
 
   # GET /moons/1/edit
   def edit
+    authorize! :edit, Report
     @moon = Moon.find(params[:id])
   end
 
   # POST /moons
   # POST /moons.json
   def create
+    authorize! :create, Report
     @moon = Report.new(params[:moon])
 
     respond_to do |format|
@@ -59,6 +63,7 @@ class MoonsController < ApplicationController
   # PUT /moons/1
   # PUT /moons/1.json
   def update
+    authorize! :update, Moon
     @moon = Moon.find(params[:id])
 
     respond_to do |format|
@@ -75,6 +80,7 @@ class MoonsController < ApplicationController
   # DELETE /moons/1
   # DELETE /moons/1.json
   def destroy
+    authorize! :destroy, Moon
     @moon = Moon.find(params[:id])
     @moon.destroy
 
