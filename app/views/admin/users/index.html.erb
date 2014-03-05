@@ -1,0 +1,28 @@
+<div id="admin-index">
+  <h1>Admin Dashboard</h1>
+  <h3>User Authorization</h3>
+  
+  <table id="all-users" class="table table-condensed table-hover table-striped">
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+
+  <% @users.each do |user| %>
+    <tr class="user">
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+      <td><%= user.role %></td>
+      <td><%= link_to "Update", admin_user_path(user), :method => :put %></td>
+    </tr>
+  <% end %>
+  
+  <% if @users.empty? %>
+    <tr class="error">
+      <td colspan="3">No users found.</td>
+    <tr>
+  <% end %>
+  </table>
+</div>
