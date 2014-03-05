@@ -33,9 +33,11 @@ end
 gem 'jquery-rails'
 gem "figaro"
 
+# Authentication & Authorization
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-braveid'
+gem "cancan"
 
 # Pagination
 gem 'kaminari'
