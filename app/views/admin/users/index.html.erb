@@ -33,4 +33,19 @@
     <tr>
   <% end %>
   </table>
+  
+  <h3>Active within the past week</h3>
+  <table id="all-users" class="table table-condensed table-hover table-striped">
+    <tr>
+      <th>Email</th>
+      <th>Last Sign-on</th>
+    </tr>
+    
+    <% @users.select{|u| u.current_sign_in_at > Time.now-7.days }.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.current_sign_in_at %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>
