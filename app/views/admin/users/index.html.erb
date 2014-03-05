@@ -41,7 +41,7 @@
       <th>Last Sign-on</th>
     </tr>
     
-    <% @users.select{|u| u.current_sign_in_at > Time.now-7.days }.each do |user| %>
+    <% @recently_active.each do |user| %>
     <tr>
       <td><%= user.email %></td>
       <td><%= user.current_sign_in_at %></td>

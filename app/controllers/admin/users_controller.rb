@@ -5,7 +5,8 @@ class Admin::UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.order("current_sign_in_at DESC").all
+    @recently_active = User.where("current_sign_in_at > ?", Time.now-7.days).order("current_sign_in_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
