@@ -7,6 +7,16 @@ class Ability
     can :manage, :all if user.is? :admin
     cannot :manage, :all if user.is? :banned
     cannot :manage, :all if user.is? :default
+    
+    if user.is? :scout
+      can :manage, Moon
+      can :read, Mineral
+    end
+    
+    if user.is? :observer
+      can :read, Moon
+      can :read, Mineral
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

@@ -1,5 +1,6 @@
 class MineralsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   
   # GET /minerals
   # GET /minerals.json
