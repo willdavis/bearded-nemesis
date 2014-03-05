@@ -4,6 +4,10 @@
   <li><%= link_to 'Moon Minerals', minerals_path %></li>
   <li><%= link_to 'Solar Systems', solar_systems_path %></li>
   
+  <% if can? :manage, User %>
+    <li><%= link_to 'Admin', admin_users_path %></li>
+  <% end %>
+  
   <% if user_signed_in? %>
     <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
   <% end %>

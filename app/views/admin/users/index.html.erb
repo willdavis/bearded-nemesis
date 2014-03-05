@@ -1,0 +1,36 @@
+<div id="admin-index">
+  <h1>Admin Dashboard</h1>
+  <h3>User Authorization</h3>
+  
+  <table id="all-users" class="table table-condensed table-hover table-striped">
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+
+  <% @users.each do |user| %>
+    <%= form_tag("/admin/users/#{user.id}", :method => :put) do %>
+    <tr class="user">
+      <td><%= user.email %></td>
+      <td><%= text_field_tag("user[name]", user.name) %></td>
+      <td>
+        <% if !user.is? :admin %>
+          <%= select_tag("user[role]", options_for_select(User::Roles, user.role)) %>
+        <% else %>
+          Admin
+        <% end %>
+      </td>
+      <td><%= submit_tag "Update" %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  
+  <% if @users.empty? %>
+    <tr class="error">
+      <td colspan="3">No users found.</td>
+    <tr>
+  <% end %>
+  </table>
+</div>
